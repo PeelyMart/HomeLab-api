@@ -137,4 +137,43 @@ app.get("/api/battery", (req, res) => {
 
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
+}); 
+
+
+let collectorProgress = {
+  status: "idle",
+  collected: 0,
+  updatedAt: null
+};
+
+app.post("/api/collector/progress", (req, res) => {
+  const { status, collected, total } = req.body;
+
+  if (
+    !allowedStatuses.includes(status) ||
+    !Number.isFinite(collected) ||
+    !Number.isFinite(pages)
+  ) {
+    return res.status(400).json({ error: "Invalid progress payload" });
+  } 
+
+  collectorProgress = {
+      status,
+      collected,
+      total: Number.isFinite(total) ? total : null,
+      pages,
+      run_id: run_id ?? null,
+      updated_at: new Date().toISOString(),
+    };
+
+    res.json({ success: true });
+  });
+
+  app.get("/api/collector/progress", (req, res) => {
+    res.json(collectorProgress);
+
 });
+
+
+
+
