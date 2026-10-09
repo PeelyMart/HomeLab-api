@@ -6,9 +6,6 @@ const PORT = 3000;
 
 
 
-const TELEGRAM_TOKEN = "8690151977:AAGN9C-A85Lwl49UuMkZVaiXLxwmymPwr6g";
-const TELEGRAM_CHAT_ID = "7220935956";
-
 async function sendTelegram(message) {
     try {
         const response = await fetch(
