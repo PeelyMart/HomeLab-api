@@ -149,7 +149,9 @@ let collectorProgress = {
 };
 
 app.post("/api/collector/progress", (req, res) => {
-  const { status, collected, total } = req.body;
+  const { status, collected, total, pages, run_id } = req.body;
+  
+  const allowedStatuses = ["running", "completed", "stopped", "error"];
 
   if (
     !allowedStatuses.includes(status) ||
