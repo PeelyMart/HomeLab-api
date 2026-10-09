@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X230i Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+        <h1>X230i</h1>
+
+        <section class="card">
+            <h2>Battery</h2>
+
+            <div id="battery">Loading...</div>
+            <p id="status"></p>
+        </section> 
+
+	<section class="card">
+	    <h2>Services</h2>
+
+	    <div class="service">
+		<span>Pi-hole</span>
+		<span id="pihole-status">Checking...</span>
+	    </div>
+
+	    <div class="service">
+		<span>Samba</span>
+		<span id="samba-status">Checking...</span>
+	    </div>
+
+	    <div class="service">
+		<span>Tailscale</span>
+		<span id="tailscale-status">Checking...</span>
+	    </div>
+	</section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
